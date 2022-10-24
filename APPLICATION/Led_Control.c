@@ -40,7 +40,7 @@ void Delay_ISR(void);
  ******************************************************************************/
 void Delay_ISR(void){
     static uint8 i;
-    Led_Toggle(GREEN_LED);
+    Led_Toggle(BLUE_LED);
     Delay_Ms(ON_OFF[i++]);
     i &= 1;
 }
@@ -65,7 +65,7 @@ void Led_Control(uint32 OnTime, uint32 OffTime){
 
     Delay_Timer_Init(&Delay_ISR);
 
-    Led_On(GREEN_LED);
+    Led_On(BLUE_LED);
     Delay_Ms(ON_OFF[ON]);
 
     while(1){

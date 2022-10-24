@@ -130,10 +130,10 @@ typedef enum {
 typedef struct {
     Port_PinType PinType;
     Port_PinModeType PinMode;
-    Port_PinEdgeType PinEdge;
     Port_PinDirectionType PinDirection;
     Port_PinInternalAttachType PinInternalAttach;
     Port_PinOutputCurrentType PinOutputCurrent;
+    Port_PinEdgeType PinEdge;
     Port_PinInterruptTriggerType PinInterruptTrigger;
 } Port_ConfigType;
 

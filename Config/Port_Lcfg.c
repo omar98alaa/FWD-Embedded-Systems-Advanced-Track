@@ -30,14 +30,14 @@ Port_ConfigType ConfigPtr[NUM_OF_USED_PINS] = {
     /*{
         Port_PinType,
         Port_PinModeType,
-        Port_PinEdgeType,
         Port_PinDirectionType,
         Port_PinInternalAttachType,
         Port_PinOutputCurrentType,
+        Port_PinEdgeType,
         Port_PinInterruptTriggerType,
         }
      */
-    {PinF2, DIO, NO_EDGE, OUTPUT, PULL_DOWN, _2MA, NO_TRIGGER}
+    {PinF2, DIO, OUTPUT, PULL_DOWN, _2MA, NO_EDGE, NO_TRIGGER}
 };
 
 #else

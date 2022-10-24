@@ -185,11 +185,11 @@ void Port_Init(void){
                     break;
                 }
 
-                if(ConfigPtr[i].PinInterruptTrigger == ADC_TRIG){
+                if(ConfigPtr[i].PinMode == ADC_TRIG){
                     SET_BIT(REG(Port, GPIOADCCTL), Pin);
                 }
 
-                else if(ConfigPtr[i].PinInterruptTrigger == ADC_TRIG){
+                else if(ConfigPtr[i].PinMode == DMA_TRIG){
                     SET_BIT(REG(Port, GPIODMACTL), Pin);
                 }
 
