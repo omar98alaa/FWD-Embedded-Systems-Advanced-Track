@@ -169,7 +169,7 @@ void Port_Init(void){
                     break;
 
                     case SINGLE_EDGE:
-                        SET_BIT(REG(Port, GPIOIS), Pin);
+                        RESET_BIT(REG(Port, GPIOIS), Pin);
                         RESET_BIT(REG(Port, GPIOIBE), Pin);
                     break;
 

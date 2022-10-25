@@ -68,7 +68,7 @@ void IntCtrl_Init(void){
                 SET_VAL(
                     REG(
                         MCU_PERI_BASE, 
-                        (SYSPRI1 + ((IntCtrl_Config[i].InterruptType / 4) - 1))
+                        (SYSPRI1 + (((IntCtrl_Config[i].InterruptType /4)-1)*4))
                     ), 
                     (((IntCtrl_Config[i].InterruptType % 4) * 8) + 5), 
                     (IntCtrl_Config[i].PriorityValueType & 0x07u)

@@ -117,7 +117,7 @@ typedef enum {
 typedef enum {
     FALLING,
     RISING,
-    NO_EDGE
+    NO_LEVEL
 } Port_PinEdgeType;
 
 typedef enum {
@@ -135,8 +135,8 @@ typedef struct {
     Port_PinDirectionType PinDirection;
     Port_PinInternalAttachType PinInternalAttach;
     Port_PinOutputCurrentType PinOutputCurrent;
-    Port_PinEdgeType PinEdge;
     Port_PinInterruptTriggerType PinInterruptTrigger;
+    Port_PinEdgeType PinEdge;
 } Port_ConfigType;
 
 /******************************************************************************
