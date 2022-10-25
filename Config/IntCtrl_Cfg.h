@@ -19,7 +19,7 @@
  *  GLOBAL CONSTANT MACROS
  *****************************************************************************/
 #define PRIGROUPS                           _8PRIGROUPS
-#define NUM_OF_USED_INTS                    1
+#define NUM_OF_USED_INTS                    2
 
 /******************************************************************************
  *  GLOBAL FUNCTION MACROS

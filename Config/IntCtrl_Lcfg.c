@@ -28,7 +28,8 @@
 #if(NUM_OF_USED_INTS)
 IntCtrl_ConfigType IntCtrl_Config[NUM_OF_USED_INTS] = {
     /* {InterruptType, PriorityValueType} */
-    {SYSTICK_EXC, 0}
+    {SYSTICK_EXC, 0},
+    {GPIO_F_INT, 1}
 };
 #else
 IntCtrl_ConfigType *IntCtrl_Config;

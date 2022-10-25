@@ -1,24 +1,25 @@
 /*******************************************************************************
  *  FILE DESCRIPTION
  *  ----------------------------------------------------------------------------
- *         FILE:   Led_Control.h  
- *       MODULE:   Led Control
+ *         FILE:   Switch.h  
+ *       MODULE:   -
  * 
  *  DESCRIPTION:  
  * 
  ******************************************************************************/
-#ifndef LED_CONTROL_H
-#define LED_CONTROL_H
+#ifndef SWITCH_H
+#define SWITCH_H
 
 /*******************************************************************************
  *  INCLUDES
  ******************************************************************************/
-#include "../LIBRARIES/Std_Types.h"
+#include "../../MCAL/Inc/Port_Types.h"
 
 /*******************************************************************************
  *  GLOBAL CONSTANT MACROS
  ******************************************************************************/
-
+#define SW1             PinF0
+#define SW2             PinF4
 
 /*******************************************************************************
  *  GLOBAL FUNCTION MACROS
@@ -28,7 +29,9 @@
 /*******************************************************************************
  *  GLOBAL DATA TYPES AND STRUCTURES
  ******************************************************************************/
+typedef Port_PinType Switch_InstanceType;
 
+typedef Port_IntHandlerType Switch_IntHandlerType;
 
 /*******************************************************************************
  *  GLOBAL DATA PROTOTYPES
@@ -41,19 +44,22 @@
 
 
 /*******************************************************************************
- * \syntax          : void Led_Control(void)
- * \Description     : Toggles an LED after for given ON and OFF time
- * \Sync\Async      : Sync
- * \Reentrancy      : Non-Reentrant
- * \parameters (in) : None
- * \parameters (out): None
- * \Return value    : None
+ * \syntax          : -
+ * \Description     : -
+ * \Sync\Async      : -
+ * \Reentrancy      : -
+ * \parameters (in) : -
+ * \parameters (out): -
+ * \Return value    : -
  ******************************************************************************/
-void Led_Control(void);
+void Swtich_SetCallback(
+    Switch_InstanceType Switch, 
+    Switch_IntHandlerType (*CallBack)
+);
 
-#endif  /* LED_CONTROL_H */
+#endif  /* SWITCH_H */
 
 /*******************************************************************************
- *  END OF FILE:    Led_Control.h  
+ *  END OF FILE:    Switch.h  
  ******************************************************************************/
  

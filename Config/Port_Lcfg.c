@@ -37,7 +37,9 @@ Port_ConfigType ConfigPtr[NUM_OF_USED_PINS] = {
         Port_PinInterruptTriggerType,
         }
      */
-    {PinF2, DIO, OUTPUT, PULL_DOWN, _2MA, NO_EDGE, NO_TRIGGER}
+    {PinF2, DIO, OUTPUT, PULL_DOWN, _2MA, NO_EDGE, NO_TRIGGER},
+    {PinF0, EXT_INT, INPUT, PULL_UP, NO_OUT_CURRENT, SINGLE_EDGE, LOW},
+    {PinF4, EXT_INT, INPUT, PULL_UP, NO_OUT_CURRENT, SINGLE_EDGE, LOW}
 };
 
 #else

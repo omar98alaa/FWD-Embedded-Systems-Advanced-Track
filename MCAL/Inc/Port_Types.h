@@ -127,6 +127,8 @@ typedef enum {
     NO_TRIGGER
 } Port_PinInterruptTriggerType;
 
+typedef void Port_IntHandlerType;
+
 typedef struct {
     Port_PinType PinType;
     Port_PinModeType PinMode;

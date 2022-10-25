@@ -28,6 +28,16 @@
  *  GLOBAL DATA
  *****************************************************************************/
 extern Port_ConfigType ConfigPtr[];
+static Port_IntHandlerType (*Port_IntHandlers[])() = 
+{
+    NULL, NULL, NULL, NULL, NULL, NULL, NULL,
+    NULL, NULL, NULL, NULL, NULL, NULL, NULL,
+    NULL, NULL, NULL, NULL, NULL, NULL, NULL,
+    NULL, NULL, NULL, NULL, NULL, NULL, NULL,
+    NULL, NULL, NULL, NULL, NULL, NULL, NULL,
+    NULL, NULL, NULL, NULL, NULL, NULL, NULL
+};
+
 
 /******************************************************************************
  *  LOCAL FUNCTION PROTOTYPES
@@ -198,6 +208,159 @@ void Port_Init(void){
         }
 
     }
+}
+
+/******************************************************************************
+ * \syntax          : void GPIOA_Handler(void)
+ * \Description     : Port A interrupt handler
+ * \Sync\Async      : Sync
+ * \Reentrancy      : Non-Reentrant
+ * \parameters (in) : None
+ * \parameters (out): None
+ * \Return value    : None
+ *****************************************************************************/
+void GPIOA_Handler(void){
+    uint8 Int_Status = REG(GPIO_A, GPIOMIS);
+    uint8 i = 0;
+    while(Int_Status){
+        if(Int_Status & 1){
+            Port_IntHandlers[i]();
+            SET_BIT(REG(GPIO_A, GPIOICR), i);
+            break;
+        }
+        Int_Status >>= 1;
+        i++;
+    }
+}
+
+/******************************************************************************
+ * \syntax          : void GPIOB_Handler(void)
+ * \Description     : Port B interrupt handler
+ * \Sync\Async      : Sync
+ * \Reentrancy      : Non-Reentrant
+ * \parameters (in) : None
+ * \parameters (out): None
+ * \Return value    : None
+ *****************************************************************************/
+void GPIOB_Handler(void){
+    uint8 Int_Status = REG(GPIO_B, GPIOMIS);
+    uint8 i = 0;
+    while(Int_Status){
+        if(Int_Status & 1){
+            Port_IntHandlers[i+8]();
+            SET_BIT(REG(GPIO_B, GPIOICR), i);
+            break;
+        }
+        Int_Status >>= 1;
+        i++;
+    }
+}
+
+/******************************************************************************
+ * \syntax          : void GPIOC_Handler(void)
+ * \Description     : Port C interrupt handler
+ * \Sync\Async      : Sync
+ * \Reentrancy      : Non-Reentrant
+ * \parameters (in) : None
+ * \parameters (out): None
+ * \Return value    : None
+ *****************************************************************************/
+void GPIOC_Handler(void){
+    uint8 Int_Status = REG(GPIO_C, GPIOMIS);
+    uint8 i = 0;
+    while(Int_Status){
+        if(Int_Status & 1){
+            Port_IntHandlers[i+16]();
+            SET_BIT(REG(GPIO_C, GPIOICR), i);
+            break;
+        }
+        Int_Status >>= 1;
+        i++;
+    }
+}
+
+/******************************************************************************
+ * \syntax          : void GPIOD_Handler(void)
+ * \Description     : Port D interrupt handler
+ * \Sync\Async      : Sync
+ * \Reentrancy      : Non-Reentrant
+ * \parameters (in) : None
+ * \parameters (out): None
+ * \Return value    : None
+ *****************************************************************************/
+void GPIOD_Handler(void){
+    uint8 Int_Status = REG(GPIO_D, GPIOMIS);
+    uint8 i = 0;
+    while(Int_Status){
+        if(Int_Status & 1){
+            Port_IntHandlers[i+24]();
+            SET_BIT(REG(GPIO_D, GPIOICR), i);
+            break;
+        }
+        Int_Status >>= 1;
+        i++;
+    }
+}
+
+/******************************************************************************
+ * \syntax          : void GPIOE_Handler(void)
+ * \Description     : Port E interrupt handler
+ * \Sync\Async      : Sync
+ * \Reentrancy      : Non-Reentrant
+ * \parameters (in) : None
+ * \parameters (out): None
+ * \Return value    : None
+ *****************************************************************************/
+void GPIOE_Handler(void){
+    uint8 Int_Status = REG(GPIO_E, GPIOMIS);
+    uint8 i = 0;
+    while(Int_Status){
+        if(Int_Status & 1){
+            Port_IntHandlers[i+32]();
+            SET_BIT(REG(GPIO_E, GPIOICR), i);
+            break;
+        }
+        Int_Status >>= 1;
+        i++;
+    }
+}
+
+/******************************************************************************
+ * \syntax          : void GPIOF_Handler(void)
+ * \Description     : Port F interrupt handler
+ * \Sync\Async      : Sync
+ * \Reentrancy      : Non-Reentrant
+ * \parameters (in) : None
+ * \parameters (out): None
+ * \Return value    : None
+ *****************************************************************************/
+void GPIOF_Handler(void){
+    uint8 Int_Status = REG(GPIO_F, GPIOMIS);
+    uint8 i = 0;
+    while(Int_Status){
+        if(Int_Status & 1){
+            Port_IntHandlers[i+40]();
+            SET_BIT(REG(GPIO_F, GPIOICR), i);
+            break;
+        }
+        Int_Status >>= 1;
+        i++;
+    }
+}
+
+/******************************************************************************
+ * \syntax          : void Port_SetCallBack(Port_PinType Pin, 
+ *                                          Port_IntHandlerType (*CallBack))
+ * \Description     : Sets the corresponding callback function
+ * \Sync\Async      : Sync
+ * \Reentrancy      : Non-Reentrant
+ * \parameters (in) : Port_PinType Pin
+ *                    Port_IntHandlerType (*CallBack)
+ * \parameters (out): None
+ * \Return value    : None
+ *****************************************************************************/
+void Port_SetCallBack(Port_PinType Pin, Port_IntHandlerType (*CallBack)){
+    Port_IntHandlers[Pin] = CallBack;
 }
 
 /******************************************************************************
