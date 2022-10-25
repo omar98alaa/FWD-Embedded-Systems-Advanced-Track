@@ -1,8 +1,7 @@
 
 # LED Control
 
-This project is about controling the brightness of an LED using TIVA-C development board 
-with Cortex M4. 
+This project is about controling the brightness of an LED using TIVA-C development board.
 
 Drivers implemented:
     
