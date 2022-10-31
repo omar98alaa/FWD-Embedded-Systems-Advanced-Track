@@ -11,6 +11,8 @@
  *  INCLUDES
  ******************************************************************************/
 #include "APPLICATION/Led_Control.h"
+#include "MCAL/Inc/IntCtrl.h"
+#include "MCAL/Inc/Port.h"
 
 /*******************************************************************************
  *  LOCAL MACROS CONSTANT\FUNCTION
