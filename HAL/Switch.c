@@ -54,7 +54,7 @@
  ******************************************************************************/
 void Swtich_SetCallback(
     Switch_InstanceType Switch, 
-    Switch_IntHandlerType (*CallBack)
+    Switch_IntHandlerType (*CallBack)()
 ){
     Port_SetCallBack(Switch, CallBack);
 }

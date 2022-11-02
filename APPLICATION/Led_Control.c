@@ -30,6 +30,8 @@
  *  GLOBAL DATA
  ******************************************************************************/
 volatile static uint8 Tick;
+volatile static uint8 clicks;
+volatile static uint8 OnOff;
 volatile static uint8 ON_OFF[2];
 
 /*******************************************************************************
@@ -48,17 +50,16 @@ void Delay_ISR(void){
 }
 
 void Switch1_ISR(void){
-    ON_OFF[ON]++;
-    if(ON_OFF[OFF] != 1){
-        ON_OFF[OFF]--;
-    }
+    clicks++;
 }
 
 void Switch2_ISR(void){
-    ON_OFF[OFF]++;
-    if(ON_OFF[ON] != 1){
-        ON_OFF[ON]--;
-    }
+    OnOff++;
+	OnOff &= 1;
+	if(clicks){
+		ON_OFF[OnOff] = clicks;
+		clicks = 0;
+	}
 }
 /*******************************************************************************
  *  GLOBAL FUNCTIONS
@@ -75,9 +76,9 @@ void Switch2_ISR(void){
  * \Return value    : None
  ******************************************************************************/
 void Led_Control(void){
-    Delay_Timer_Init(&Delay_ISR);
-    Swtich_SetCallback(SW1, &Switch1_ISR);
-    Swtich_SetCallback(SW2, &Switch2_ISR);
+    Delay_Timer_Init(Delay_ISR);
+    Swtich_SetCallback(SW1, Switch1_ISR);
+    Swtich_SetCallback(SW2, Switch2_ISR);
 
     static uint8 i = 0;
     static uint8 Time;

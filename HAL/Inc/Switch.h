@@ -54,7 +54,7 @@ typedef Port_IntHandlerType Switch_IntHandlerType;
  ******************************************************************************/
 void Swtich_SetCallback(
     Switch_InstanceType Switch, 
-    Switch_IntHandlerType (*CallBack)
+    Switch_IntHandlerType (*CallBack)()
 );
 
 #endif  /* SWITCH_H */
@@ -62,4 +62,3 @@ void Swtich_SetCallback(
 /*******************************************************************************
  *  END OF FILE:    Switch.h  
  ******************************************************************************/
- 

@@ -100,31 +100,33 @@ typedef enum {
 } Port_PinModeType;
 
 typedef enum {
+    NO_ATTACHMENT,
     PULL_UP,
     PULL_DOWN,
-    OPEN_DRAIN,
-    NO_ATTACHMENT
+    OPEN_DRAIN
 } Port_PinInternalAttachType;
 
 typedef enum {
+    NO_OUT_CURRENT,
     _2MA,
     _4MA,
     _8MA,
-    _8MA_W_SLR,
-    NO_OUT_CURRENT
+    _8MA_W_SLR
 } Port_PinOutputCurrentType;
 
 typedef enum {
-    FALLING,
-    RISING,
-    NO_LEVEL
+    NO_LEVEL,
+    LOW_LEVEL,
+    HIGH_LEVEL,
+    FALLING = 1,
+    RISING
 } Port_PinEdgeType;
 
 typedef enum {
+    NO_TRIGGER,
     LEVEL,
     SINGLE_EDGE,
-    BOTH_EDGES,
-    NO_TRIGGER
+    BOTH_EDGES
 } Port_PinInterruptTriggerType;
 
 typedef void Port_IntHandlerType;
@@ -165,4 +167,3 @@ typedef struct {
 /******************************************************************************
  *  END OF FILE:    Port_Types.h  
  *****************************************************************************/
- 

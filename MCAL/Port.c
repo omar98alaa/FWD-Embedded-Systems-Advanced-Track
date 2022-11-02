@@ -224,7 +224,7 @@ void GPIOA_Handler(void){
     uint8 i = 0;
     while(Int_Status){
         if(Int_Status & 1){
-            Port_IntHandlers[i]();
+            (*(Port_IntHandlers[i]))();
             SET_BIT(REG(GPIO_A, GPIOICR), i);
             break;
         }
@@ -247,7 +247,7 @@ void GPIOB_Handler(void){
     uint8 i = 0;
     while(Int_Status){
         if(Int_Status & 1){
-            Port_IntHandlers[i+8]();
+            (*(Port_IntHandlers[i+8]))();
             SET_BIT(REG(GPIO_B, GPIOICR), i);
             break;
         }
@@ -270,7 +270,7 @@ void GPIOC_Handler(void){
     uint8 i = 0;
     while(Int_Status){
         if(Int_Status & 1){
-            Port_IntHandlers[i+16]();
+            (*(Port_IntHandlers[i+16]))();
             SET_BIT(REG(GPIO_C, GPIOICR), i);
             break;
         }
@@ -293,7 +293,7 @@ void GPIOD_Handler(void){
     uint8 i = 0;
     while(Int_Status){
         if(Int_Status & 1){
-            Port_IntHandlers[i+24]();
+            (*(Port_IntHandlers[i+24]))();
             SET_BIT(REG(GPIO_D, GPIOICR), i);
             break;
         }
@@ -316,7 +316,7 @@ void GPIOE_Handler(void){
     uint8 i = 0;
     while(Int_Status){
         if(Int_Status & 1){
-            Port_IntHandlers[i+32]();
+            (*(Port_IntHandlers[i+32]))();
             SET_BIT(REG(GPIO_E, GPIOICR), i);
             break;
         }
@@ -339,7 +339,7 @@ void GPIOF_Handler(void){
     uint8 i = 0;
     while(Int_Status){
         if(Int_Status & 1){
-            Port_IntHandlers[i+40]();
+            (*(Port_IntHandlers[i+40]))();
             SET_BIT(REG(GPIO_F, GPIOICR), i);
             break;
         }
@@ -350,7 +350,7 @@ void GPIOF_Handler(void){
 
 /******************************************************************************
  * \syntax          : void Port_SetCallBack(Port_PinType Pin, 
- *                                          Port_IntHandlerType (*CallBack))
+ *                                          Port_IntHandlerType (*CallBack)())
  * \Description     : Sets the corresponding callback function
  * \Sync\Async      : Sync
  * \Reentrancy      : Non-Reentrant
@@ -359,7 +359,7 @@ void GPIOF_Handler(void){
  * \parameters (out): None
  * \Return value    : None
  *****************************************************************************/
-void Port_SetCallBack(Port_PinType Pin, Port_IntHandlerType (*CallBack)){
+void Port_SetCallBack(Port_PinType Pin, Port_IntHandlerType (*CallBack)()){
     Port_IntHandlers[Pin] = CallBack;
 }
 

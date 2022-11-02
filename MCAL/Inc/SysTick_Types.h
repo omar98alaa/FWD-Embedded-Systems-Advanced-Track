@@ -54,7 +54,7 @@ typedef enum {
 typedef struct {
     SysTick_ClkSrcType ClkSrc; 
     SysTick_ValueType Value;
-    SysTick_IntHandlerType (*CallBck);
+    SysTick_IntHandlerType (*CallBck)();
     SysTick_NotificationType Notification;
 } SysTick_ConfigType;
 
@@ -84,4 +84,3 @@ typedef struct {
 /*******************************************************************************
  *  END OF FILE:    SysTick_Types.h  
  ******************************************************************************/
- 

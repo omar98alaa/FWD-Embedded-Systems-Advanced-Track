@@ -119,7 +119,7 @@ void GPIOF_Handler(void);
 
 /******************************************************************************
  * \syntax          : void Port_SetCallBack(Port_PinType Pin, 
- *                                          Port_IntHandlerType (*CallBack))
+ *                                          Port_IntHandlerType (*CallBack)())
  * \Description     : Sets the corresponding callback function
  * \Sync\Async      : Sync
  * \Reentrancy      : Non-Reentrant
@@ -128,11 +128,10 @@ void GPIOF_Handler(void);
  * \parameters (out): None
  * \Return value    : None
  *****************************************************************************/
-void Port_SetCallBack(Port_PinType Pin, Port_IntHandlerType (*CallBack));
+void Port_SetCallBack(Port_PinType Pin, Port_IntHandlerType (*CallBack)());
 
 #endif  /* PORT_H */
 
 /******************************************************************************
  *  END OF FILE:    Port.h  
  *****************************************************************************/
- 

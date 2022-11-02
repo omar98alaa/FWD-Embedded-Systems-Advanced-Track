@@ -44,7 +44,7 @@
 
 
 /*******************************************************************************
- * \syntax          : void Delay_Timer_Init(Delay_IntHandlerType (*CallBack))
+ * \syntax          : void Delay_Timer_Init(Delay_IntHandlerType (*CallBack)())
  * \Description     : Initializes the Timer used for providing delay
  * \Sync\Async      : Sync
  * \Reentrancy      : Non-Reentrant
@@ -52,7 +52,7 @@
  * \parameters (out): None
  * \Return value    : None
  ******************************************************************************/
-void Delay_Timer_Init(Delay_IntHandlerType (*CallBack)){
+void Delay_Timer_Init(Delay_IntHandlerType (*CallBack)()){
     SysTick_ConfigType Config = 
     {
         SYSTICK_SYSCLK,

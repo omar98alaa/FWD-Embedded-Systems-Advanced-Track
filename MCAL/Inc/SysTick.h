@@ -96,7 +96,7 @@ SysTick_FlagType SysTick_CheckFlag(void);
 void SysTick_Handler(void);
 
 /*******************************************************************************
- * \syntax          : void SysTick_SetCallback(SysTick_IntHandlerType(*CallBck))
+ * \syntax          : void SysTick_SetCallback(SysTick_IntHandlerType(*CallBck)())
  * \Description     : Sets the callback function to the SysTick ISR
  * \Sync\Async      : Sync
  * \Reentrancy      : Non-Reentrant
@@ -104,7 +104,7 @@ void SysTick_Handler(void);
  * \parameters (out): None
  * \Return value    : None
  ******************************************************************************/
-void SysTick_SetCallback(SysTick_IntHandlerType (*CallBck));
+void SysTick_SetCallback(SysTick_IntHandlerType (*CallBck)());
 
 /*******************************************************************************
  * \syntax          : void SysTick_EnNotification(void)
@@ -155,4 +155,3 @@ void SysTick_StopTimer(void);
 /*******************************************************************************
  *  END OF FILE:    SysTick.h  
  ******************************************************************************/
- 

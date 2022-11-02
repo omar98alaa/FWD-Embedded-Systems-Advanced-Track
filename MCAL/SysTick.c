@@ -135,7 +135,7 @@ SysTick_FlagType SysTick_CheckFlag(void){
  * \Return value    : None
  ******************************************************************************/
 void SysTick_Handler(void){
-    Int_Handler();
+    (*Int_Handler)();
 }
 
 /*******************************************************************************
@@ -147,7 +147,7 @@ void SysTick_Handler(void){
  * \parameters (out): None
  * \Return value    : None
  ******************************************************************************/
-void SysTick_SetCallback(SysTick_IntHandlerType (*CallBck)){
+void SysTick_SetCallback(SysTick_IntHandlerType (*CallBck)()){
     Int_Handler = CallBck;
 }
 

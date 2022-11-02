@@ -42,7 +42,7 @@ typedef SysTick_IntHandlerType Delay_IntHandlerType;
 
 
 /*******************************************************************************
- * \syntax          : void Delay_Timer_Init(Delay_IntHandlerType (*CallBack))
+ * \syntax          : void Delay_Timer_Init(Delay_IntHandlerType (*CallBack)())
  * \Description     : Initializes the Timer used for providing delay
  * \Sync\Async      : Sync
  * \Reentrancy      : Non-Reentrant
@@ -50,7 +50,7 @@ typedef SysTick_IntHandlerType Delay_IntHandlerType;
  * \parameters (out): None
  * \Return value    : None
  ******************************************************************************/
-void Delay_Timer_Init(Delay_IntHandlerType (*CallBack));
+void Delay_Timer_Init(Delay_IntHandlerType (*CallBack)());
 
 /*******************************************************************************
  * \syntax          : void Delay_Ms(uint32 Delay)
@@ -68,4 +68,3 @@ void Delay_Ms(uint32 Delay);
 /*******************************************************************************
  *  END OF FILE:    Delay.h  
  ******************************************************************************/
- 
