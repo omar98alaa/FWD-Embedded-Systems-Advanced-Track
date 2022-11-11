@@ -144,10 +144,12 @@ int main( void )
 	/* Setup the hardware for use with the Keil demo board. */
 	prvSetupHardware();
 	
+#if(configUSE_EDF_SCHEDULER == 1)
 	/* Create Comsumer buffer */
 	Consumer_q = xQueueCreate(3, sizeof(Q_Msg *));
 	
 	/* Reset Trace GPIO PINS */
+	
 	GPIO_write(TASK1_TRACE, PIN_IS_LOW);
 	GPIO_write(TASK2_TRACE, PIN_IS_LOW);
 	GPIO_write(TASK3_TRACE, PIN_IS_LOW);
@@ -158,7 +160,7 @@ int main( void )
 	GPIO_write(TICK_TRACE, PIN_IS_LOW);
 	
     /* Create Tasks here */
-	#if(configUSE_EDF_SCHEDULER == 1)
+	
 		xTaskPeriodicCreate(Button_1_Monitor, 
 							"Button_1_Monitor", 
 							configMINIMAL_STACK_SIZE, 
@@ -201,26 +203,12 @@ int main( void )
 							
 		xTaskPeriodicCreate(Load_2_Simulation, 
 							"Load_2_Simulation", 
-							configMINIMAL_STACK_SIZE + (NUM_OF_TASKS * 40 * configUSE_STATS_FORMATTING_FUNCTIONS),
+							configMINIMAL_STACK_SIZE + ((NUM_OF_TASKS+1) * 40 * configUSE_STATS_FORMATTING_FUNCTIONS),
 							NULL, 
 							1, 
 							NULL,
 							PERIOD_6);
-	#else
-		xTaskCreate(Load_1_Simulation, 
-					"Load_1_Simulation", 
-					configMINIMAL_STACK_SIZE, 
-					NULL, 
-					2, 
-					NULL);
-		
-		xTaskCreate(Load_2_Simulation, 
-					"Load_2_Simulation", 
-					configMINIMAL_STACK_SIZE + (NUM_OF_TASKS * 40 * configUSE_STATS_FORMATTING_FUNCTIONS), 
-					NULL, 
-					1, 
-					NULL);
-	#endif
+#endif
 	
 	/* Now all the tasks have been started - start the scheduler.
 
@@ -269,6 +257,8 @@ static void prvSetupHardware( void )
 	VPBDIV = mainBUS_CLK_FULL;
 }
 /*-----------------------------------------------------------*/
+/* Create Tasks Here */
+#if(configUSE_EDF_SCHEDULER == 1)
 /* Task 1 */
 void Button_1_Monitor(void *pvParameters){
 	TickType_t xLastWakeTime = xTaskGetTickCount();
@@ -455,6 +445,7 @@ void Load_2_Simulation(void *pvParameters){
 	}
 }
 /*-----------------------------------------------------------*/
+#endif
 
 /* IDLE Hook */
 #if(configUSE_IDLE_HOOK == 1)
