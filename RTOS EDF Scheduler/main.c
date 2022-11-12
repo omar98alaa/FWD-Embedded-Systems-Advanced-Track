@@ -203,7 +203,7 @@ int main( void )
 							
 		xTaskPeriodicCreate(Load_2_Simulation, 
 							"Load_2_Simulation", 
-							configMINIMAL_STACK_SIZE + ((NUM_OF_TASKS+1) * 40 * configUSE_STATS_FORMATTING_FUNCTIONS),
+							configMINIMAL_STACK_SIZE + (((NUM_OF_TASKS+1) * 40 * (configUSE_STATS_FORMATTING_FUNCTIONS && 1)) / sizeof(size_t)),
 							NULL, 
 							1, 
 							NULL,
